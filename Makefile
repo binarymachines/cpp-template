@@ -1,4 +1,6 @@
-
+#
+# Makefile for C++ project template commands (using conan for dependency management)
+#
 
 init-dirs:
 	cat required_dirs.txt | xargs mkdir -p

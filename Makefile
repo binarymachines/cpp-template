@@ -1,6 +1,7 @@
 #
 # Makefile for C++ project template commands (using conan for dependency management)
 #
+#  making a change to demo branching for Ben
 
 init-dirs:
 	cat required_dirs.txt | xargs mkdir -p

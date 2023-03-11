@@ -1,0 +1,64 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <nlohmann/json.hpp>
+using namespace std;
+using json = nlohmann::json;
+
+class JNote{
+
+    int note_id;
+    int note_value;
+
+    public:
+        JNote(){
+			note_id = 0;
+			note_value = 1;
+		};
+
+        void play(){
+			std::cout << "playing note id: " << to_string(note_id) << " with note value " << to_string(note_value) << endl;
+		};
+
+		void update(int new_id, int new_value){
+			note_id = new_id;
+			note_value = new_value;
+		}
+
+		int get_id(void){
+			return note_id;
+		}
+
+		int get_value(void){
+			return note_value;
+		}
+
+
+        ~JNote(){};
+};
+
+
+
+int main(void){
+
+	JNote note = JNote();
+	note.play();
+
+	note.update(2, 3);
+	note.play();
+
+	json j;
+	j["note_id"] = note.get_id();
+	j["value"] = note.get_value();
+	
+
+	// explicit conversion to string
+	//std::string s = j.dump();   
+
+	// serialization with pretty printing
+	// pass in the amount of spaces to indent
+	std::cout << j.dump(4) << std::endl;
+
+	return 0;
+}
